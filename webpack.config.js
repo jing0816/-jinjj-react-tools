@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const autoprefixer = require('autoprefixer');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const webpack = require('webpack');
@@ -26,11 +28,40 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        test: /\.(css|less)$/,
+        use: ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                // minimize: true //压缩css
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: () => [
+                  autoprefixer({
+                    browsers: [
+                      'defaults',
+                      'not ie < 11',
+                      'last 2 versions',
+                      '> 1%',
+                      'iOS 7',
+                      'last 3 iOS versions',
+                    ],
+                  }),
+                ],
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'less-loader',
+            },
+          ],
+        }),
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -59,6 +90,8 @@ module.exports = {
       filename: './demo.html',
       chunks: ['vendor', 'index', 'demo'],
     }),
+    // new ExtractTextWebpackPlugin('[name].css'),
+    new ExtractTextWebpackPlugin('index.css'),
     // new UglifyJSPlugin({
     //   sourceMap: true
     // }),
