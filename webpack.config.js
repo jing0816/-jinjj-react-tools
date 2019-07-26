@@ -7,7 +7,7 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    // index: './src/index.js', // 发布时
     demo: './test/index.js',
   },
   output: {
@@ -87,7 +87,11 @@ module.exports = {
         use: [
           'file-loader'
         ]
-      }
+      },
+      {
+        test: /\.(htm|html)$/,
+        use: 'html-withimg-loader'
+      },
     ]
   },
   plugins: [
@@ -99,19 +103,19 @@ module.exports = {
     }),
     // new ExtractTextWebpackPlugin('[name].css'),
     new ExtractTextWebpackPlugin('index.css'),
-    new ParallelUglifyPlugin({
-      uglifyJS: {
-        output: {
-          beautify: true,
-          comments: false,
-        },
-        compress: {
-          drop_console: true,
-          collapse_vars: true,
-          reduce_vars: true,
-        },
-      },
-    }),
+    // new ParallelUglifyPlugin({
+    //   uglifyJS: {
+    //     output: {
+    //       beautify: true,
+    //       // comments: false,
+    //     },
+    //     compress: {
+    //       drop_console: false,
+    //       collapse_vars: true,
+    //       reduce_vars: true,
+    //     },
+    //   },
+    // }),
   ],
   optimization: {
     splitChunks: {
