@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 class Select extends Component {
-  constructor(props) {
-    super(props);
+  onClick() {
+    console.log(this);
   }
 
   render() {
     return (
-      <div>测试</div>
+      <a onClick={this.onClick.bind(this)}>测试123</a>
     );
   }
 }
