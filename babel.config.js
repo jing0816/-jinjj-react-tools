@@ -1,28 +1,23 @@
 module.exports = {
-  presets: [
+  "presets": ["@babel/env", "@babel/react"],
+  "compact": false,
+  "plugins": [
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-export-default-from",
     [
-      '@babel/env',
+      "@babel/plugin-proposal-decorators",
       {
-        useBuiltIns: 'entry',
-        corejs: 2,
-      },
-    ],
-    '@babel/react',
-  ],
-  compact: false,
-  plugins: [
-    '@babel/plugin-proposal-export-namespace-from',
-    '@babel/plugin-proposal-export-default-from',
-    [
-      '@babel/plugin-proposal-decorators',
-      {
-        legacy: true,
+        "legacy": true,
       },
     ],
     [
-      '@babel/plugin-proposal-class-properties',
-      { loose: true },
+      "@babel/plugin-proposal-class-properties",
+      { "loose": true },
     ],
-    ['@babel/plugin-proposal-object-rest-spread', { useBuiltIns: true }],
+    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
+    ["@babel/transform-runtime", {
+      "helpers": false,
+      "regenerator": true,
+    }],
   ],
-};
+}
