@@ -8,7 +8,7 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 module.exports = {
   entry: {
     // index: './src/index.js', // 发布时
-    demo: './test/index.js',
+    index: './test/index.js',
   },
   output: {
     filename: "[name].js",
@@ -98,7 +98,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './test/index.html',
-      filename: './demo.html',
+      filename: './index.html',
       chunks: ['vendor', 'index', 'demo'],
     }),
     // new ExtractTextWebpackPlugin('[name].css'),
@@ -128,6 +128,13 @@ module.exports = {
         },
       }
     }
+  },
+  devServer: {
+    port: 3000,             // 端口
+    open: true,             // 自动打开浏览器
+    hot: true,               // 开启热更新
+    overlay: true, // 浏览器页面上显示错误
+    historyApiFallback: true,
   },
   // mode: "production", //压缩输出
 };

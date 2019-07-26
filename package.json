@@ -4,7 +4,8 @@
   "description": "react组件开发打包模板",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "webpack --watch"
+    "dev": "cross-env webpack --watch",
+    "server": "cross-env webpack-dev-server"
   },
   "author": "jinjj0816@163.com",
   "license": "MIT",
@@ -24,6 +25,7 @@
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.1.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
@@ -45,6 +47,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.37.0",
     "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
     "webpack-parallel-uglify-plugin": "^1.1.1"
   },
   "dependencies": {
