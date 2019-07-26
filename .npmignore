@@ -1,0 +1,12 @@
+dist
+node_modules
+src/test
+.editorconfig
+.eslintrc.js
+.npmignore
+package-lock.json
+postcss.config.js
+webpack.config.js
+babel.config.js
+.gitignore
+npm-debug.log
