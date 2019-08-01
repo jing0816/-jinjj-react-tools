@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Select extends Component {
-  onClick() {
+  onClick = () => {
     console.log(this);
   }
 
@@ -9,7 +9,7 @@ class Select extends Component {
     return (
       <div>
         <span>3333</span>
-        <a onClick={this.onClick.bind(this)}>测试123</a>
+        <a onClick={this.onClick}>测试123</a>
       </div>
     );
   }
