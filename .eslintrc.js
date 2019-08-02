@@ -19,6 +19,9 @@ const eslintrc = {
     'jest',
   ],
   rules: {
+    "no-underscore-dangle": 0,
+    "react/require-default-props": [0],
+    'consistent-return': [0],
     'react/jsx-one-expression-per-line': 0,
     'react/prop-types': 0,
     'react/forbid-prop-types': 0,
@@ -65,11 +68,6 @@ if (process.env.RUN_ENV === 'DEMO') {
     'react/destructuring-assignment': 0,
     'react/no-multi-comp': 0,
     'jsx-a11y/href-no-hash': 0,
-    'prefer-destructuring': 0, // TODO: remove later
-    'max-len': 0, // TODO: remove later
-    'consistent-return': 0, // TODO: remove later
-    'no-return-assign': 0, // TODO: remove later
-    'no-param-reassign': 0, // TODO: remove later
     'import/no-extraneous-dependencies': 0,
   });
 }
