@@ -101,8 +101,8 @@ module.exports = {
       filename: './index.html',
       chunks: ['vendor', 'index', 'demo'],
     }),
-    // new ExtractTextWebpackPlugin('[name].css'),
-    new ExtractTextWebpackPlugin('index.css'),
+    new ExtractTextWebpackPlugin('[name].css'),
+    // new ExtractTextWebpackPlugin('index.css'),
     // new ParallelUglifyPlugin({
     //   uglifyJS: {
     //     output: {
