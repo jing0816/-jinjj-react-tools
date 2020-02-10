@@ -7,12 +7,11 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 module.exports = {
   entry: {
-    // index: './src/index.js', // 发布时
-    index: './example/index.js',
+    index: './src/index.js',
   },
   output: {
     filename: "[name].js",
-    path: __dirname + "/dist"
+    path: __dirname + "/lib"
   },
   // devtool: 'source-map',
   resolve: {
@@ -20,15 +19,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   loader: 'eslint-loader',
-      //   enforce: "pre",
-      //   include: [path.resolve(__dirname, 'src')], // 指定检查的目录
-      //   options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
-      //       formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
-      //   }
-      // },
       {
         test: /\.(js|jsx)$/,
         use: ['babel-loader'],
@@ -96,45 +86,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: './example/index.html',
-      filename: './index.html',
-      chunks: ['vendor', 'index', 'demo'],
-    }),
     new ExtractTextWebpackPlugin('[name].css'),
-    // new ExtractTextWebpackPlugin('index.css'),
-    // new ParallelUglifyPlugin({
-    //   uglifyJS: {
-    //     output: {
-    //       beautify: true,
-    //       // comments: false,
-    //     },
-    //     compress: {
-    //       drop_console: false,
-    //       collapse_vars: true,
-    //       reduce_vars: true,
-    //     },
-    //   },
-    // }),
-  ],
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {   // 抽离第三方插件
-          test: /node_modules/,
-          chunks: 'initial',
-          name: 'vendor',  // 打包后的文件名，任意命名
-          priority: 10
-        },
-      }
-    }
-  },
-  devServer: {
-    port: 3000,             // 端口
-    open: true,             // 自动打开浏览器
-    hot: true,               // 开启热更新
-    overlay: true, // 浏览器页面上显示错误
-    historyApiFallback: true,
-  },
+  ]
   // mode: "production", //压缩输出
 };
