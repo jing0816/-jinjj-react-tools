@@ -1,3 +1,12 @@
+#### 发包步骤
+1、npm run dev 本地测试
+
+2、npm run build 编译生成lib文件
+
+3、cnpm publish 发包
+
+>tips:包内样式使用.css
+
 #### API
      
 属性|类型|默认|值范围|说明
